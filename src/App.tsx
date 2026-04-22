@@ -124,7 +124,10 @@ const ClockCard = ({ config, time }: { config: TimeZoneConfig; time: Date }) => 
 
 export default function App() {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [zones, setZones] = useState<TimeZoneConfig[]>(DEFAULT_ZONES);
+  const [zones, setZones] = useState<TimeZoneConfig[]>(() => {
+    const saved = localStorage.getItem('chronozones_config');
+    return saved ? JSON.parse(saved) : DEFAULT_ZONES;
+  });
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
 
@@ -132,6 +135,10 @@ export default function App() {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('chronozones_config', JSON.stringify(zones));
+  }, [zones]);
 
   const updateZone = (id: string, updates: Partial<TimeZoneConfig>) => {
     setZones(prev => prev.map(z => z.id === id ? { ...z, ...updates } : z));
