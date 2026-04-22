@@ -1,9 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 @import "tailwindcss";
-
-@theme {
-  --font-pixel: "Silkscreen", cursive;
-}
 
 @layer utilities {
   .writing-mode-vertical {

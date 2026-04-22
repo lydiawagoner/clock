@@ -108,7 +108,7 @@ const ClockCard = ({ config, time }: { config: TimeZoneConfig; time: Date }) => 
         </div>
 
         <div className="mt-12 flex flex-col items-center">
-          <p className="text-xl md:text-2xl font-pixel text-white/80 tracking-tight uppercase">
+          <p className="text-xl md:text-2xl font-light text-white/80 tracking-tight">
             {config.city}
           </p>
           <p className="text-[10px] font-mono text-white/10 mt-2 tracking-[0.3em] uppercase">
@@ -209,7 +209,7 @@ export default function App() {
                             type="text" 
                             value={zone.city}
                             onChange={(e) => updateZone(zone.id, { city: e.target.value })}
-                            className="w-full bg-white/5 border border-white/30 rounded-lg py-3 px-10 text-sm font-pixel text-white focus:outline-none focus:border-white/60 focus:bg-white/10 transition-all uppercase"
+                            className="w-full bg-white/5 border border-white/30 rounded-lg py-3 px-10 text-sm font-medium text-white focus:outline-none focus:border-white/60 focus:bg-white/10 transition-all"
                           />
                         </div>
                       </div>
